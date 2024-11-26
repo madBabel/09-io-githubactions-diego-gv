@@ -5,12 +5,13 @@
 Explorar las formas de proveer entradas (inputs) y establecer salidas (outputs) en flujos de trabajo de GitHub Actions.
 
 ## Tareas
+
 0. Preparación --> Crear un nuevo environment como mínimo llamado `int`
 
 1. Crear un archivo llamado `09-input-outputs.yml` en la carpeta `.github/workflows` en la raíz del repositorio. Los datos del flujo de trabajo deben ser los siguientes:
 
    - **Nombre del workflow:** Inputs and Outputs.
-   - **Desencadenantes:** 
+   - **Desencadenantes:**
      - `workflow_dispatch` con los siguientes inputs:
        - `dry-run`: booleano, valor predeterminado `false`, descripción: "Skip deployment and only print build output".
        - `target`: environment, requerido, descripción: "Which environment the workflow will target".
@@ -22,7 +23,7 @@ Explorar las formas de proveer entradas (inputs) y establecer salidas (outputs) 
      - Se ejecuta en `ubuntu-latest`.
      - Incluye los siguientes pasos:
        1. **Print GITHUB_OUTPUT path:** Imprimir el valor de la variable de entorno `GITHUB_OUTPUT`.
-       2. **Build:** 
+       2. **Build:**
           - Definir un id llamado `build`.
           - Escribir dos salidas en el archivo de salida de GitHub Actions:
             - `tag=<valor del input tag>`.
@@ -50,12 +51,13 @@ Explorar las formas de proveer entradas (inputs) y establecer salidas (outputs) 
    - Reflexionar sobre cómo se utilizaron las salidas (`outputs`) entre los trabajos.
   
 5. Relanzar manualmente un workflow para el target int y el tag v2, y cuando acabe, lanzar el Autograde
+
 ## Tips
 
 Para agregar valores a un archivo, podemos usar la siguiente sintaxis: `echo "<contenido de la línea>" >> "<ruta del archivo>"`
 
 Por ejemplo, para agregar el valor de una entrada a GITHUB_OUTPUT, usa:
+
   ```bash
 echo "status=${{ inputs.build-status }}" >> $GITHUB_OUTPUT
    ```
-
